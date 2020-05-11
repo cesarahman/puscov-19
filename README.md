@@ -1,5 +1,5 @@
 # puscov-19
-UAS IWP(Pusat Informasi COVID-19)
+#UAS IWP(Pusat Informasi COVID-19)
 
 ## Clone Repository
 
@@ -12,3 +12,6 @@ npm install
 ## Menggunakan github di VS Code
 
 Bisa dilihat di Referensi(https://www.petanikode.com/git-vscode/)
+
+
+*USAHAKAN PERINTAH TERSEBUT DIJALANKAN MENGGUNAKAN TERMINAL

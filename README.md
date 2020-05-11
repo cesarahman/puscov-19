@@ -15,3 +15,24 @@ Bisa dilihat di [Referensi](https://www.petanikode.com/git-vscode/)
 
 
 *USAHAKAN PERINTAH TERSEBUT DIJALANKAN MENGGUNAKAN TERMINAL
+
+
+## Materi 1
+
+bit.ly/vokasiApi
+
+## Materi 2
+
+bit.ly/vokasiApi2
+
+## Materi 3
+
+bit.ly/vokasiApi3
+
+## Materi Testing
+
+bit.ly/vokasiTesting
+
+## Materi Validation
+
+bit.ly/vokasiValidation

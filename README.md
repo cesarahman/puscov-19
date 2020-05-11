@@ -11,7 +11,7 @@ npm install
 
 ## Menggunakan github di VS Code
 
-Bisa dilihat di Referensi(https://www.petanikode.com/git-vscode/)
+Bisa dilihat di [Referensi](https://www.petanikode.com/git-vscode/)
 
 
 *USAHAKAN PERINTAH TERSEBUT DIJALANKAN MENGGUNAKAN TERMINAL

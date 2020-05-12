@@ -1,7 +1,7 @@
 const express = require('express')
 const fs = require('fs')
 const projectName = process.env.npm_package_name
-const debug = require('debug')(`${projectName}:indonesia`)
+const debug = require('debug')(`${projectName}:global`)
 const router = express.Router()
 const files = fs.readdirSync(__dirname)
  

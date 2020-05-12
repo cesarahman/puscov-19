@@ -6,5 +6,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.use('/indonesia', require('./indonesia'))
+router.use('/global', require('./global'))
 
 module.exports = router;

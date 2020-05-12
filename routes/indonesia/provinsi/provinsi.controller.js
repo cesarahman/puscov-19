@@ -1,54 +1,74 @@
-let Prov = [
-	{
-        "id": 1,
-        "Kode_Provi": "31",
-        "Provinsi": "DKI Jakarta",
-        "Kasus_Posi": "307",
-        "Kasus_Semb": "22",
-        "Kasus_Meni": "29"
-    }
-]
-
+const Prov = require('./provinsi.schema')
 exports.findAll = (req, res, next) => {
     const q = req.query;
-    let data = Prov;
-    
-    if (q.id) data = Prov.filter(row => row.id == q.id)
-    if (q.name) data = Prov.filter(row =>  row.name == q.name)
-    
-    res.json({ data });
-   }
+    const where  = {}
+    if(q.Kode_Provi) where['Kode_Provi'] = q.Kode_Provi;
+    if(q.Provinsi) where['Provinsi'] = q.Provinsi;
+ 
+    Prov.find(where)
+    .limit(req.query.limit || 0)
+    .skip(req.query.skip || 0)
+    .then(prov => {
+    res.json(prov);
+    })
+    .catch(err => next(err));
+}
 
 exports.findById = (req, res, next) => {
     const id = req.params.id
-    const data = Prov.filter( row =>  row.id == id);
-    res.json({ id, data })
+    Prov.findById(id)
+    .then(prov => {
+    res.json(prov);
+    })
+    .catch(err => next(err));
    }
 
 exports.insert = (req, res, next) => {
     const data = req.body;
-    Prov.push(data);
-    res.json({ data: Prov});
+    Prov.create(data)
+    .then(prov => {
+       res.json({
+         message: `New data added!`,
+         data: prov
+       });
+    })
+    .catch(err => next(err))   
    }
 
 exports.updateById = (req, res, next) => {
     const id = req.params.id
-    let data = Prov;
-    const index = Prov.findIndex(row => row.id == id)
-    if (req.body.Kode_Provi) data[index].Kode_Provi = req.body.Kode_Provi;
-    res.json({ message: `${id} updated!`, data});
+    const data = req.body
+    Prov.findByIdAndUpdate(id, data)
+    .then(prov => {
+       res.json({
+         message: `Data ${id} updated!`,
+         data: prov
+       });
+    })
+    .catch(err => next(err))
    }
 
 exports.removeById = (req, res, next) => {
     const id = req.params.id
-    const index  = Prov.findIndex(row => row.id == id)
-    Prov.splice(index, 1)
-    res.json({ message: `${id} deleted!`, data: Prov});
+    Prov.findByIdAndRemove(id)
+    .then(prov => {
+       res.json({
+         message: `Data ${id} removed!`,
+         data: prov
+       });
+    })
+    .catch(err => next(err))
    }
 
 exports.remove = (req, res, next) => {
-    Prov = []
-    res.json({ message: `All Roles removed!`, data: Prov });
+    Prov.remove()
+    .then(prov => {
+    res.json({
+      message: 'All Data removed!',
+      data: prov
+    });
+    })
+    .catch(err => next(err))
    }
    
    

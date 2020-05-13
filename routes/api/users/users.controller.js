@@ -1,6 +1,7 @@
 const Users = require('./users.schema')
 const passwordHash = require('password-hash');
 const createError = require('http-errors')
+const { validationResult } = require('express-validator');
 
 
 
@@ -40,6 +41,10 @@ exports.findAll = (req, res, next) => {
 }
 
 exports.findById = (req, res, next) => {
+    const errors = validationResult(req);
+ if (!errors.isEmpty()) {
+   return res.status(422).json({ errors: errors.array() });
+ }
     const id = req.params.id
     Users.findById(id)
     .populate('role')
@@ -50,6 +55,10 @@ exports.findById = (req, res, next) => {
 }
 
 exports.insert = (req, res, next) => {
+    const errors = validationResult(req);
+ if (!errors.isEmpty()) {
+   return res.status(422).json({ errors: errors.array() });
+ }
     let data = req.body;
     data.password = passwordHash.generate(data.password);
     Users.create(data)
@@ -89,6 +98,11 @@ exports.remove = (req, res, next) => {
 }
 
 exports.removeById = (req, res, next) => {
+    const errors = validationResult(req);
+ if (!errors.isEmpty()) {
+   return res.status(422).json({ errors: errors.array() });
+ }
+
     const id = req.params.id
     Users.findByIdAndRemove(id)
     .then(users => {
@@ -99,3 +113,9 @@ exports.removeById = (req, res, next) => {
     })
     .catch(err => next(err))
 }
+
+exports.findByUserOrEmail = (value) => {
+    return Users.findOne({$or: [{ username: value}, { email: value}]})
+   }
+
+   

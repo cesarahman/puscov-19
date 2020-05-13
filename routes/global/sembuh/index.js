@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const c = require('./positif.controller')
+const c = require('./sembuh.controller')
 
 router.get('/', c.findAll)
 router.get('/:id', c.findById)

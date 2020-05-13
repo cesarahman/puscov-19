@@ -11,35 +11,41 @@
 //         chai.request(server)
 //         .get('/api/roles')
 //         .end((err, res) => {
-//             res.should.have.status(200);
-//             console.log(res.body.data);
+//             res.should.have.status(401);
+            
 //             done();
 //         });
 //     });
+
+
 //     it("should be unauthorized to insert new roles without token", (done) => {
 //         chai.request(server)
 //         .post('/api/roles')
 //         .end((err, res) => {
-//             res.should.have.status(500);
-//             console.log(res.body.data);
+//             res.should.have.status(401);
+            
 //             done();
 //         });
 //     });
+
+
 //     it("should be not found update roles without id", (done) => {
 //         chai.request(server)
 //         .put('/api/roles')
 //         .end((err, res) => {
 //             res.should.have.status(404);
-//             console.log(res.body.data);
+            
 //             done();
 //         });
 //     });
+
+
 //     it("should be unauthorized to delete roles without token", (done) => {
 //         chai.request(server)
 //         .delete('/api/roles')
 //         .end((err, res) => {
-//             res.should.have.status(200);
-//             console.log(res.body.data);
+//             res.should.have.status(401);
+            
 //             done();
 //         });
 //     });
@@ -53,12 +59,14 @@
 //         .auth('admin', 'admin')
 //         .end((err, res) => {
 //             expect(err).to.be.null;
-//             res.should.have.status(400);
+//             res.should.have.status(200);
 //             token = res.body.token;
-//             console.log(res.body.data);
+            
 //             done();
 //         });
 //     });
+
+
 //     it("should get all roles", (done)=> {
 //         chai.request(server)
 //         .get('/api/roles')
@@ -66,10 +74,12 @@
 //         .end((err, res) => {
 //             expect(err).to.be.null;
 //             res.should.have.status(200);
-//             console.log(res.body.data);
+            
 //             done();
 //         });
 //     })
+
+
 //     it("should insert new roles", (done)=> {
 //         chai.request(server)
 //         .post('/api/roles')

@@ -18,4 +18,4 @@ const scheme = new Schema({
         required: true
     }
 });
-module.exports = model('Sembuh', scheme, 'sembuh');
+module.exports = model('Semb', scheme, 'semb');

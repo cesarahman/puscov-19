@@ -7,5 +7,6 @@ router.get('/', function(req, res, next) {
 });
 router.use('/indonesia', require('./indonesia'))
 router.use('/global', require('./global'))
-
+router.use('/api', require('./api'))
+router.use('/auth', require('./auth'))
 module.exports = router;

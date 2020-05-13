@@ -1,4 +1,4 @@
-const Roles = require('./positif.schema')
+const Roles = require('./meninggal.schema')
 exports.findAll = (req, res, next) => {
     const q = req.query;
     const where  = {}

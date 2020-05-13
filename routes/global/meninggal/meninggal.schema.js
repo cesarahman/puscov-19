@@ -18,4 +18,4 @@ const scheme = new Schema({
         required: true,
     }
 });
-module.exports = model('Positif', scheme, 'positif');
+module.exports = model('Meninggal', scheme, 'meninggal');

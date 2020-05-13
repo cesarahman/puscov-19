@@ -9,7 +9,7 @@ const scheme = new Schema({
       required: true,
    },
    value:{
-      type: Number,
+      type: String,
       required: true,
    },
    date: {

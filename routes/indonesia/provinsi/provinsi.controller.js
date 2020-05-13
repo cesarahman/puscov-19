@@ -1,41 +1,40 @@
 const Prov = require('./provinsi.schema')
+const { validationResult } = require('express-validator');
 exports.findAll = (req, res, next) => {
    const q = req.query;
    const where  = {}
    if(q.Kode_Provi) where['Kode_Provi'] = q.Kode_Provi;
    if(q.Provinsi) where['Provinsi'] = q.Provinsi;
-   
    Prov.find(where)
    .limit(req.query.limit || 0)
    .skip(req.query.skip || 0)
    .then(prov => {
-      res.json(prov);
-   })
-   .catch(err => next(err));
+      res.json(prov); }) .catch(err => next(err));
 }
-
 exports.findById = (req, res, next) => {
    const id = req.params.id
    Prov.findById(id)
    .then(prov => {
-      res.json(prov);
-   })
-   .catch(err => next(err));
+      res.json(prov);}).catch(err => next(err));
 }
-
 exports.insert = (req, res, next) => {
+   const errors = validationResult(req);
+ if (!errors.isEmpty()) {
+   return res.status(422).json({ errors: errors.array() });}
    const data = req.body;
    Prov.create(data)
    .then(prov => {
       res.json({
          message: `New data added!`,
          data: prov
-      });
-   })
-   .catch(err => next(err))   
+      });}).catch(err => next(err))   
 }
 
 exports.updateById = (req, res, next) => {
+   const errors = validationResult(req);
+ if (!errors.isEmpty()) {
+   return res.status(422).json({ errors: errors.array() });
+ }
    const id = req.params.id
    const data = req.body
    Prov.findByIdAndUpdate(id, data)
